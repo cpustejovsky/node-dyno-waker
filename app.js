@@ -16,30 +16,23 @@ const isWakeTime = () => {
   return isWakeAM || isWakePM;
 };
 
+const wakeDyno = async (urlPrefix)=>{
+  try {
+    await axios.get(`https://${urlPrefix}.herokuapp.com/`);
+    console.log(`hit ${urlPrefix}`);
+  } catch (error) {
+    console.log(error);
+    console.log("waiting ~5s and trying again")
+    setTimeout(wakeDyno(urlPrefix), 5000);
+  }
+}
+
 const dynoWaker = async () => {
   if (isWakeTime()) {
     console.log(`Hitting dynos at ${moment().format("h:mm A")}`);
-    try {
-      await axios.get("https://cpustejovsky-estuary.herokuapp.com/");
-      console.log("hit estuary");
-    } catch (error) {
-      console.log(error);
-      dynoWaker();
-    }
-    try {
-      await axios.get("https://life-together-calculator.herokuapp.com/");
-      console.log("hit life together");
-    } catch (error) {
-      console.log(error);
-      dynoWaker();
-    }
-    try {
-      await axios.get("https://bears-and-bear-markets.herokuapp.com/");
-      console.log("hit bears and bear markets");
-    } catch (error) {
-      console.log(error);
-      dynoWaker();
-    }
+    await wakeDyno("cpustejovsky-estuary")
+    await wakeDyno("life-together-calculator")
+    await wakeDyno("bears-and-bear-markets")
     setTimeout(dynoWaker, 1000 * 60 * 59);
   } else {
     console.log(
