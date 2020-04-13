@@ -33,12 +33,13 @@ const dynoWaker = async () => {
     await wakeDyno("cpustejovsky-estuary")
     await wakeDyno("life-together-calculator")
     await wakeDyno("bears-and-bear-markets")
-    setTimeout(dynoWaker, 1000 * 60 * 59);
+    setTimeout(dynoWaker, 1000 * 60 * 30);
+    console.log(`Finished hitting dynos at ${moment().format("h:mm A")}`);
   } else {
     console.log(
-      `going to sleep for 59 minutes since it's ${moment().format("h:mm A")}`
+      `going to sleep for 30 minutes since it's ${moment().format("h:mm A")}`
     );
-    setTimeout(dynoWaker, 1000 * 60 * 59);
+    setTimeout(dynoWaker, 1000 * 60 * 30);
   }
 };
 
