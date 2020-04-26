@@ -16,23 +16,22 @@ const isWakeTime = () => {
   return isWakeAM || isWakePM;
 };
 
-const wakeDyno = async (urlPrefix)=>{
+const wakeDyno = async (urlPrefix) => {
   try {
     await axios.get(`https://${urlPrefix}.herokuapp.com/`);
     console.log(`hit ${urlPrefix}`);
   } catch (error) {
     console.log(error);
-    console.log("waiting ~5s and trying again")
+    console.log("waiting ~5s and trying again");
     setTimeout(wakeDyno(urlPrefix), 5000);
   }
-}
+};
 
 const dynoWaker = async () => {
   if (isWakeTime()) {
     console.log(`Hitting dynos at ${moment().format("h:mm A")}`);
-    await wakeDyno("cpustejovsky-estuary")
-    await wakeDyno("life-together-calculator")
-    await wakeDyno("bears-and-bear-markets")
+    await wakeDyno("life-together-calculator");
+    await wakeDyno("bears-and-bear-markets");
     setTimeout(dynoWaker, 1000 * 60 * 30);
     console.log(`Finished hitting dynos at ${moment().format("h:mm A")}`);
   } else {
