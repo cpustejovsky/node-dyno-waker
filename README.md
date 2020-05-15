@@ -6,10 +6,10 @@ I've found that you can keep two or three dynos awake with this schedule without
 
 ## Set Up
 
-To use run `npm i dyno_waker`
+To use run `npm i dyno-waker`
 
 Next, require into your application:
-`const dynoWaker = require("dyno_waker");`
+`const dynoWaker = require("dyno-waker");`
 
 ## Run
 

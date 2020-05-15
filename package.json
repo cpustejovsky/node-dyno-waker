@@ -1,8 +1,8 @@
 {
-  "name": "dyno_waker",
-  "version": "1.0.0",
+  "name": "dyno-waker",
+  "version": "1.0.1",
   "description": "wake up Heroku dynos during work hours",
-  "main": "app.js",
+  "main": "dynowaker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
