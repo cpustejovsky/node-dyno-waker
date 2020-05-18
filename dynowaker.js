@@ -1,8 +1,9 @@
 const axios = require("axios");
 const moment = require("moment");
+const tz = require("moment-timezone")
 
 const isWakeTime = () => {
-  let now = moment();
+  let now = moment().tz('America/New_York');
   let hoursAM = [6, 7, 8, 9, 10, 11];
   let hoursPM = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -35,15 +36,15 @@ const asyncForEach = async (array, callback) => {
 
 const dynoWaker = async (...args) => {
   if (isWakeTime()) {
-    console.log(`Hitting dynos at ${moment().format("h:mm A")}`);
+    console.log(`Hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
     await asyncForEach(args, async (arg) => {
       await wakeDyno(arg);
     });
     setTimeout(dynoWaker, 1000 * 60 * 30);
-    console.log(`Finished hitting dynos at ${moment().format("h:mm A")}`);
+    console.log(`Finished hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
   } else {
     console.log(
-      `going to sleep for 30 minutes since it's ${moment().format("h:mm A")}`
+      `going to sleep for 30 minutes since it's ${moment().tz('America/New_York').format("h:mm A")}`
     );
     setTimeout(dynoWaker, 1000 * 60 * 30);
   }
