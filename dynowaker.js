@@ -28,18 +28,16 @@ const wakeDyno = async (urlPrefix) => {
   }
 };
 
-const asyncForEach = async (array, callback) => {
+async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
-    await callback(array[index], index, array);
+    await callback(array[index]);
   }
-};
+}
 
 const dynoWaker = async (...args) => {
   if (isWakeTime()) {
     console.log(`Hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
-    await asyncForEach(args, async (arg) => {
-      await wakeDyno(arg);
-    });
+    await asyncForEach(args, wakeDyno)
     setTimeout(dynoWaker, 1000 * 60 * 30);
     console.log(`Finished hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
   } else {
