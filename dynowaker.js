@@ -35,11 +35,11 @@ async function asyncForEach(array, callback) {
 }
 
 const dynoWaker = async (type, ...args) => {
-  if (type === "daily") {
+  if (type === "twitter-bot") {
     if (isWakeTime()) {
       console.log(`Hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
-      await asyncForEach(args, wakeDyno)
-      setTimeout(dynoWaker, 1000 * 60 * 60 * 24, ...args);
+      wakeDyno(...args)
+      setTimeout(dynoWaker, 1000 * 60 * 60 * 24, "twitter-bot", ...args);
       console.log(`Finished hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
     }
   } else {
