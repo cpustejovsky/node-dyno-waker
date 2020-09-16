@@ -14,9 +14,7 @@ Next, require into your application:
 ## Run
 
 Then call it in your application:
-`dynoWaker("regular","<dyno>","<dyno>", "<dyno>")`
-
-To run it with my [twitter-bot](https://github.com/cpustejovsky/go_twitter_bot), I run `dynoWaker("daily","<dyno>","<dyno>", "<dyno>")`
+`dynoWaker("<dyno>","<dyno>", "<dyno>")`
 
 `"<dyno>"` would be the prefix of your heroku url
 

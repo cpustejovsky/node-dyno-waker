@@ -34,28 +34,18 @@ async function asyncForEach(array, callback) {
   }
 }
 
-const dynoWaker = async (type, ...args) => {
-  if (type === "daily") {
-    if (isWakeTime()) {
-      console.log(`Hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
-      wakeDyno(...args)
-      setTimeout(dynoWaker, 1000 * 60 * 60 * 24, "twitter-bot", ...args);
-      console.log(`Finished hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
-    }
+const dynoWaker = async (...args) => {
+  if (isWakeTime()) {
+    console.log(`Hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
+    await asyncForEach(args, wakeDyno)
+    setTimeout(dynoWaker, 1000 * 60 * 30, ...args);
+    console.log(`Finished hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
   } else {
-    if (isWakeTime()) {
-      console.log(`Hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
-      await asyncForEach(args, wakeDyno)
-      setTimeout(dynoWaker, 1000 * 60 * 30, ...args);
-      console.log(`Finished hitting dynos at ${moment().tz('America/New_York').format("h:mm A")}`);
-    } else {
-      console.log(
-        `going to sleep for 30 minutes since it's ${moment().tz('America/New_York').format("h:mm A")}`
-      );
-      setTimeout(dynoWaker, 1000 * 60 * 30, ...args);
-    }
+    console.log(
+      `going to sleep for 30 minutes since it's ${moment().tz('America/New_York').format("h:mm A")}`
+    );
+    setTimeout(dynoWaker, 1000 * 60 * 30, ...args);
   }
-
 };
 
 module.exports = dynoWaker;
