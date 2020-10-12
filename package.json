@@ -9,6 +9,9 @@
   "author": "cpustejovsky",
   "license": "ISC",
   "dependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "@types/moment": "^2.13.0",
+    "@types/moment-timezone": "^0.5.30",
     "axios": "^0.19.2",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.31"
