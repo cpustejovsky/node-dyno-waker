@@ -1,6 +1,6 @@
 # Dyno Waker
 
-Designed to keep Heroku free tier dynos wake from 6:00am to 9:00pm EST
+Designed to keep Heroku free tier dynos awake from 6:00am to 9:00pm in your specified timezone.
 
 I've found that you can keep two or three dynos awake with this schedule without going over Heroku's alotted hours.
 

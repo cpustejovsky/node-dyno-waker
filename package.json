@@ -1,8 +1,8 @@
 {
   "name": "cpustejovsky-dyno-waker",
-  "version": "1.0.5",
+  "version": "2.0.1",
   "description": "wake up Heroku dynos during work hours",
-  "main": "dynowaker.js",
+  "main": "dynowaker.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
