@@ -1,3 +1,5 @@
 import dynoWaker from "./dynowaker"
-dynoWaker("life-together-calculator", "truthify");
+let dynos = ["life-together-calculator", "truthify"]
+let tz = "America/New_York"
+dynoWaker(tz, ...dynos);
 
