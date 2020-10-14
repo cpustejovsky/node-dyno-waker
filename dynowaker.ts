@@ -34,9 +34,9 @@ const wakeDynos = async (timezone: string, urls: string[]) => {
 
 export default async function Wake(
   timezone: string = "America/New_York",
-  ...args: string[]
+  args: string[]
 ) {
   let urls: string[] = args.map((pre) => `https://${pre}.herokuapp.com/`);
   wakeDynos(timezone, urls);
-  setInterval(wakeDynos, 1000 * 10, timezone, urls);
+  setInterval(wakeDynos, 1000 * 60 * 30, timezone, urls);
 }
