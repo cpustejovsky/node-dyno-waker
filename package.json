@@ -3,7 +3,8 @@
   "type": "module",
   "version": "2.0.4",
   "description": "wake up Heroku dynos during work hours",
-  "main": "dynowaker.ts",
+  "main": "dist/dynowaker.js",
+  "types": "dist/dynowaker.d.ts",  
   "keywords": [
     "heroku",
     "dynos"
