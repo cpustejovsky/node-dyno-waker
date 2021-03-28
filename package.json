@@ -1,15 +1,15 @@
 {
   "name": "cpustejovsky-dyno-waker",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "wake up Heroku dynos during work hours",
-  "main": "dynowaker.js",
-  "types": "dynowaker.d.ts",  
+  "main": "dist/dynowaker.js",
+  "types": "dist/dynowaker.d.ts",  
   "keywords": [
     "heroku",
     "dynos"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "author": "cpustejovsky",
   "license": "ISC",
