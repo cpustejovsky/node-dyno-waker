@@ -1,7 +1,7 @@
 {
   "name": "cpustejovsky-dyno-waker",
   "type": "module",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "wake up Heroku dynos during work hours",
   "main": "dist/dynowaker.js",
   "types": "dist/dynowaker.d.ts",  
